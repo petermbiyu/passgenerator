@@ -1,6 +1,25 @@
 {
+  "name": "passgen",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/petermbiyu/passgenerator#readme",
+  "bugs": {
+    "url": "https://github.com/petermbiyu/passgenerator/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/petermbiyu/passgenerator.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "tailwind": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch"
+  },
   "dependencies": {
     "@tailwindcss/cli": "^4.1.18",
     "tailwindcss": "^4.1.18"
-  }
+  },
+  "devDependencies": {}
 }
