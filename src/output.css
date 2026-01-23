@@ -7,22 +7,14 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-orange-200: oklch(90.1% 0.076 70.697);
     --color-orange-300: oklch(83.7% 0.128 66.29);
-    --color-orange-400: oklch(75% 0.183 55.934);
-    --color-orange-500: oklch(70.5% 0.213 47.604);
     --color-gray-200: oklch(92.8% 0.006 264.531);
-    --color-gray-300: oklch(87.2% 0.01 258.338);
-    --color-gray-400: oklch(70.7% 0.022 261.325);
     --color-gray-500: oklch(55.1% 0.027 264.364);
     --color-gray-700: oklch(37.3% 0.034 259.733);
     --color-gray-800: oklch(27.8% 0.033 256.848);
-    --color-gray-900: oklch(21% 0.034 264.665);
-    --color-black: #000;
     --color-white: #fff;
+    --spacing: 0.25rem;
     --font-weight-semibold: 600;
-    --font-weight-bold: 700;
-    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
@@ -196,9 +188,6 @@
   .flex {
     display: flex;
   }
-  .table {
-    display: table;
-  }
   .h-full {
     height: 100%;
   }
@@ -214,14 +203,8 @@
   .max-w-\[560px\] {
     max-width: 560px;
   }
-  .border-collapse {
-    border-collapse: collapse;
-  }
   .cursor-pointer {
     cursor: pointer;
-  }
-  .resize {
-    resize: both;
   }
   .items-center {
     align-items: center;
@@ -229,8 +212,8 @@
   .justify-center {
     justify-content: center;
   }
-  .rounded-\[3px\] {
-    border-radius: 3px;
+  .rounded {
+    border-radius: 0.25rem;
   }
   .rounded-\[5px\] {
     border-radius: 5px;
@@ -256,11 +239,14 @@
   .border-transparent {
     border-color: transparent;
   }
-  .bg-black {
-    background-color: var(--color-black);
-  }
   .bg-gray-200 {
     background-color: var(--color-gray-200);
+  }
+  .bg-gray-800\/85 {
+    background-color: color-mix(in srgb, oklch(27.8% 0.033 256.848) 85%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-gray-800) 85%, transparent);
+    }
   }
   .bg-orange-300 {
     background-color: var(--color-orange-300);
@@ -268,26 +254,14 @@
   .p-\[1rem\] {
     padding: 1rem;
   }
-  .px-\[1\.2rem\] {
-    padding-inline: 1.2rem;
-  }
-  .px-\[1\.5rem\] {
-    padding-inline: 1.5rem;
-  }
-  .px-\[1rem\] {
-    padding-inline: 1rem;
+  .px-4 {
+    padding-inline: calc(var(--spacing) * 4);
   }
   .px-\[6px\] {
     padding-inline: 6px;
   }
-  .py-\[0\.5rem\] {
-    padding-block: 0.5rem;
-  }
-  .py-\[0\.6rem\] {
-    padding-block: 0.6rem;
-  }
-  .py-\[1rem\] {
-    padding-block: 1rem;
+  .py-2 {
+    padding-block: calc(var(--spacing) * 2);
   }
   .py-\[8px\] {
     padding-block: 8px;
@@ -314,110 +288,14 @@
   .text-white {
     color: var(--color-white);
   }
-  .underline {
-    text-decoration-line: underline;
-  }
-  .outline {
-    outline-style: var(--tw-outline-style);
-    outline-width: 1px;
-  }
   .transition {
     transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
-  .delay-\[0\.3ms\] {
-    transition-delay: 0.3ms;
-  }
-  .delay-\[0\.3s\] {
-    transition-delay: 0.3s;
-  }
-  .delay-\[0\.4s\] {
-    transition-delay: 0.4s;
-  }
-  .duration-\[0\.3s\] {
-    --tw-duration: 0.3s;
-    transition-duration: 0.3s;
-  }
-  .duration-\[0\.4s\] {
-    --tw-duration: 0.4s;
-    transition-duration: 0.4s;
-  }
-  .duration-\[0\.5s\] {
-    --tw-duration: 0.5s;
-    transition-duration: 0.5s;
-  }
-  .duration-\[0\.7s\] {
-    --tw-duration: 0.7s;
-    transition-duration: 0.7s;
-  }
-  .ease-in-out {
-    --tw-ease: var(--ease-in-out);
-    transition-timing-function: var(--ease-in-out);
-  }
-  .hover\:border {
-    &:hover {
-      @media (hover: hover) {
-        border-style: var(--tw-border-style);
-        border-width: 1px;
-      }
-    }
-  }
-  .hover\:border-solid {
-    &:hover {
-      @media (hover: hover) {
-        --tw-border-style: solid;
-        border-style: solid;
-      }
-    }
-  }
-  .hover\:border-black {
-    &:hover {
-      @media (hover: hover) {
-        border-color: var(--color-black);
-      }
-    }
-  }
-  .hover\:border-gray-300 {
-    &:hover {
-      @media (hover: hover) {
-        border-color: var(--color-gray-300);
-      }
-    }
-  }
-  .hover\:bg-black\/50 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: color-mix(in srgb, #000 50%, transparent);
-        @supports (color: color-mix(in lab, red, red)) {
-          background-color: color-mix(in oklab, var(--color-black) 50%, transparent);
-        }
-      }
-    }
-  }
-  .hover\:bg-black\/75 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: color-mix(in srgb, #000 75%, transparent);
-        @supports (color: color-mix(in lab, red, red)) {
-          background-color: color-mix(in oklab, var(--color-black) 75%, transparent);
-        }
-      }
-    }
-  }
-  .hover\:bg-gray-300 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-gray-300);
-      }
-    }
-  }
-  .hover\:bg-gray-700 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-gray-700);
-      }
-    }
+  .duration-300 {
+    --tw-duration: 300ms;
+    transition-duration: 300ms;
   }
   .hover\:bg-gray-800 {
     &:hover {
@@ -426,61 +304,10 @@
       }
     }
   }
-  .hover\:bg-gray-900 {
+  .hover\:text-gray-700 {
     &:hover {
       @media (hover: hover) {
-        background-color: var(--color-gray-900);
-      }
-    }
-  }
-  .hover\:bg-orange-200 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-orange-200);
-      }
-    }
-  }
-  .hover\:bg-orange-300 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-orange-300);
-      }
-    }
-  }
-  .hover\:bg-orange-400 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-orange-400);
-      }
-    }
-  }
-  .hover\:bg-orange-500 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-orange-500);
-      }
-    }
-  }
-  .hover\:font-bold {
-    &:hover {
-      @media (hover: hover) {
-        --tw-font-weight: var(--font-weight-bold);
-        font-weight: var(--font-weight-bold);
-      }
-    }
-  }
-  .hover\:font-semibold {
-    &:hover {
-      @media (hover: hover) {
-        --tw-font-weight: var(--font-weight-semibold);
-        font-weight: var(--font-weight-semibold);
-      }
-    }
-  }
-  .hover\:text-orange-300 {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-orange-300);
+        color: var(--color-gray-700);
       }
     }
   }
@@ -495,6 +322,10 @@
     }
   }
 }
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+.poppins {
+  font-family: "Poppins", sans-serif;
+}
 @property --tw-border-style {
   syntax: "*";
   inherits: false;
@@ -504,16 +335,7 @@
   syntax: "*";
   inherits: false;
 }
-@property --tw-outline-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
-}
 @property --tw-duration {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-ease {
   syntax: "*";
   inherits: false;
 }
@@ -522,9 +344,7 @@
     *, ::before, ::after, ::backdrop {
       --tw-border-style: solid;
       --tw-font-weight: initial;
-      --tw-outline-style: solid;
       --tw-duration: initial;
-      --tw-ease: initial;
     }
   }
 }

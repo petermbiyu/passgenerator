@@ -12,7 +12,7 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body class="w-screen h-screen bg-gray-200">
+  <body class="w-screen h-screen bg-gray-200 poppins">
     <div class="w-full h-full flex justify-center items-center">
       <div class="w-full max-w-[560px] rounded-[10px] bg-orange-300 p-[1rem]">
         <h1 class="text-[2rem] text-center font-semibold mb-[1rem]">
@@ -23,21 +23,29 @@
             type="text"
             name="Password"
             id="password"
-            placeholder="Create password"
+            placeholder="Create Password"
             class="w-full px-[6px] py-[8px] border-2 border-solid border-gray-500 rounded-[5px] focus:outline-hidden"
           />
           <span class="absolute top-[0.7rem] right-[1rem]"
             ><i
-              class="fa-regular fa-copy text-[1.4rem] text-gray-500 cursor-pointer"
+              class="fa-regular fa-copy text-[1.4rem] text-gray-500 cursor-pointer hover:text-gray-700 transition duration-300 ease"
             ></i
           ></span>
         </div>
         <button
-          class="bg-black text-white py-[0.5rem] px-[1rem] cursor-pointer font-semibold transition duration-[0.3s] ease rounded-[3px] border border-transparent hover:text-orange-300 hover:border hover:border-black hover:border-solid"
+          class="bg-gray-800/85 text-white font-semibold py-2 px-4 transition duration-300 ease rounded border border-transparent hover:bg-gray-800 cursor-pointer"
+          id="genBtn"
         >
           Generate
         </button>
+        <button
+          class="bg-gray-800/85 text-white font-semibold py-2 px-4 transition duration-300 ease rounded border border-transparent hover:bg-gray-800 cursor-pointer"
+          id="clearBtn"
+        >
+          Clear
+        </button>
       </div>
     </div>
+    <script src="./script.js"></script>
   </body>
 </html>
