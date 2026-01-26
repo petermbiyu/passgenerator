@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const clearBtn = document.querySelector("#clearBtn");
   const input = document.querySelector("#password");
   const copy = document.querySelector(".fa-copy ");
+  const copied = document.querySelector("#copied");
+  const message = document.querySelector("#message");
 
   genBtn.addEventListener("click", () => {
     genpass();
@@ -31,9 +33,21 @@ document.addEventListener("DOMContentLoaded", () => {
   //   copy pass to clipboard function
 
   function copypass() {
-    input.value.trim();
-    input.select();
-    input.setSelectionRange(0, 999);
-    navigator.clipboard.writeText(input.value);
+    const value = input.value.trim();
+    // input.select();
+
+    if (value == "") {
+      message.innerHTML = "Please Generate Password";
+    } else {
+      input.setSelectionRange(0, 999);
+      navigator.clipboard.writeText(input.value);
+      message.innerHTML = "Password Copied";
+    }
+
+    // display message
+    copied.style.display = "block";
+    setTimeout(() => {
+      copied.style.display = "none";
+    }, 3000);
   }
 });
